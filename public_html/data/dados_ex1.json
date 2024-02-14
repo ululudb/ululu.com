@@ -1,0 +1,26 @@
+{
+    "usuarios": [
+        {
+            "nome":"jose",
+            "idade":"22"
+        },
+        {
+            "nome":"jeANE",
+            "idade":"28"
+        },
+        {
+            "nome":"RONALDO",
+            "idade":"40"
+        },{
+            "nome":"maria",
+            "idade":"40"
+        },{
+            "nome":"maria",
+            "idade":"40"
+        },
+        {
+            "nome":"alberto",
+            "idade":"25"
+        }
+    ]
+}
