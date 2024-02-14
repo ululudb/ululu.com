@@ -12,10 +12,52 @@
 </head>
 
 <body>
-    o que você procura?
-    <input id="autocomplete" />
+    <p> o que você procura?
+        <input id="autocomplete" /> <input id="auto" />
+    </p>
+
+    <input class="campo" type="text">
+  <ul class="sugestoes"></ul>
 
     <script>
+        function calculate(form) {
+            var price = 52000;
+            if (form.elements.brakes.checked)
+                price += 1000;
+            if (form.elements.radio.checked)
+                price += 2500;
+            if (form.elements.turbo.checked)
+                price += 5000;
+            if (form.elements.sticker.checked)
+                price += 250;
+            form.elements.result.value = price;
+            return price
+        }
+    </script>
+    <form name="pricecalc" onsubmit="return false" onchange="calculate(this)">
+        <fieldset>
+            <legend>Work out the price of your car</legend>
+            <p>Base cost: £52000.</p>
+            <p>Select additional options:</p>
+            <ul>
+                <li><label><input type=checkbox name=brakes> Ceramic brakes (£1000)</label></li>
+                <li><label><input type=checkbox name=radio> Satellite radio (£2500)</label></li>
+                <li><label><input type=checkbox name=turbo> Turbo charger (£5000)</label></li>
+                <li><label><input type=checkbox name=sticker> "XZ" sticker (£250)</label></li>
+            </ul>
+            <p>Total: £<output name=result></output></p>
+        </fieldset>
+        <script>
+            let result = calculate(document.forms.pricecalc);
+            console.log(result);
+        </script>
+    </form>
+    <p> <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">referencia</a></p>
+
+
+    <script>
+        // https://stackoverflow.com/questions/43757047/autocomplete-using-javascript-how-is-the-value-passed
+        // https://jqueryui.com/autocomplete/
         var source = [{ label: 'VALE3' }, { label: 'PETR4' },];
         console.log(source)
 
@@ -25,9 +67,55 @@
                 select: function (event, p) {
                     console.log(p.item.label)
                     // window.location.href = ui.item.label;
+                    return p.item.label
                 }
             });
-        });</script>
+        });
+        let a = $(document)
+        console.log(a);
+        var source2 = [{ label: 'VALE' }, { label: 'PETR' },];
+
+        $(document).ready(function () {
+            $("input#auto").autocomplete({
+                source: source2,
+                select: function (event, p) {
+                    console.log(p.item.label)
+                    // window.location.href = ui.item.label;
+                }
+            });
+        });
+    </script>
+
+    <script>
+
+        function autoComplete(cidade) {
+
+            const destino = ['Salvador', 'Vitória', 'Maceió', 'Ceará', 'Rio Branco', 'Macapá', 'Porto Velho', 'Olinda', 'Aracaju', 'Capitólio', 'São Paulo', 'Paraty'];
+            return destino.filter((valor) => {
+                const valorMinusculo = valor.toLowerCase()
+                const cidadeMinusculo = cidade.toLowerCase()
+
+                return valorMinusculo.includes(cidadeMinusculo)
+            })
+        }
+        const campo = document.querySelector('.campo')
+        const sugestoes = document.querySelector('.sugestoes')
+
+        campo.addEventListener('input', ({ target }) => {
+            const dadosDoCampo = target.value
+            if (dadosDoCampo.length) {
+                const autoCompleteValores = autoComplete(dadosDoCampo)
+                sugestoes.innerHTML = `
+            ${autoCompleteValores.map((value) => {
+                    return (
+                        `<li>${value}</li>`
+                    )
+                }).join('')}
+           `
+            }
+        })
+
+    </script>
 </body>
 
 </html>
