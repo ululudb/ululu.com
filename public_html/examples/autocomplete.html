@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autocomplete</title>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+        type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    o que você procura?
+    <input id="autocomplete" />
+
+    <script>
+        var source = [{ label: 'VALE3' }, { label: 'PETR4' },];
+        console.log(source)
+
+        $(document).ready(function () {
+            $("input#autocomplete").autocomplete({
+                source: source,
+                select: function (event, p) {
+                    console.log(p.item.label)
+                    // window.location.href = ui.item.label;
+                }
+            });
+        });</script>
+</body>
+
+</html>

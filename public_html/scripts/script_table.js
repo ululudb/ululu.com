@@ -3,7 +3,7 @@
 // .then(data =>  console.log(data));
 // colocar um if para escolher de onde vali ler
 let Ltitle = document.getElementById("Ltitle")
-var uu = "https://raw.githubusercontent.com/ululudb/site/main/table.json";Ltitle.innerHTML += `<h3> LENDO via github </h3>`// lendo via github
+var uu = "https://raw.githubusercontent.com/ululudb/ululu.com/main/public_html/data/table.json";Ltitle.innerHTML += `<h3> LENDO via github </h3>`// lendo via github
 // var uu = "data/table.json"; Ltitle.innerHTML += `<h3> LENDO via servidor local </h3>`// lendo via servidor local
 fetch(uu).then((response) => {
     response.json().then((dt) => {
